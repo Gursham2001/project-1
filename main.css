@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    flex-direction: column;
+}
+
+.grid {
+    display: flex;
+    height: 650px;
+    width: 550px;
+    flex-direction: row;
+    border: 0.1px solid rgb(177, 0, 0);
+    flex-wrap: wrap;
+}
+
+.grid div {
+    border: 0px dotted rgb(177, 0, 0);
+}
+
+.shooter {
+    background-image: url(https://2.bp.blogspot.com/-C4ZktyJdXaw/V5tjqcRjboI/AAAAAAAB4J0/-yhhtknB7N00tGYXYnO8PfpSo2jKLSoRACLcB/s1600/X-Wing_Top.jpg);
+    background-size: contain;
+}
+
+.tie {
+    background-image: url(https://i.pinimg.com/474x/44/15/f4/4415f4cb720fa4339dec3272527f16e2.jpg);
+    background-size: contain;
+}
+
+.laser {
+    background-color: green;
+    background-size: contain;
+}
