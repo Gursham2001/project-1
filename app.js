@@ -25,12 +25,12 @@ cells[tiefighter].classList.add('tie')
 document.addEventListener('keydown', (event) => {
     const key = event.key
     console.log(key)
-    if (key === 'a' && !(xwing % width === 0) && !(xwing < width)) {
+    if (key === 'ArrowLeft' && !(xwing % width === 0) && !(xwing < width)) {
         cells[xwing].classList.remove('shooter')
         xwing -= 1
         cells[xwing].classList.add('shooter')
     }
-    if (key === 'd' && !(xwing % width === width - 1)) {
+    if (key === 'ArrowRight' && !(xwing % width === width - 1)) {
         cells[xwing].classList.remove('shooter')
         xwing += 1
         cells[xwing].classList.add('shooter')
@@ -48,10 +48,36 @@ document.addEventListener('keydown', (event) => {
             cells[laser].classList.remove('laser')
             laser = laser - width
             cells[laser].classList.add('laser')
-        }, 600);
+            console.log(laser)
+                // if (cells[tiefighter] === (cells[laser])) {
+                //   cells[tiefighter] 
+                // } 
+
+            if (cells[tiefighter] === (cells[laser])) {
+                cells[tiefighter].classList.remove('tie')
+                cells[laser].classList.remove('laser')
+                cells[tiefighter].classList.add('explosion')
+                score = score + 10
+                scoreDisplay.innerHTML = (`Player Score: ${score}`)
+                clearInterval(intervalLaser)
+                return
+            }
+        }, 300);
     }
     // console.log(cells)
 })
+
+// const intervalLaser = setInterval 
+
+// const intervalLaser = (cells[tiefighter] === (cells[laser])){
+//   cells[tiefighter].classList.remove('tie')
+//   cells[laser].classList.remove('laser')
+//   cells[tiefighter].classList.add('explosion')
+//   score = score + 10
+//   scoreDisplay.innerHTML = (`Player Score: ${score}`)
+//   clearInterval(intervalLaser)
+//   return
+// }
 
 setInterval(() => {
     if (tiefighter >= 0 && tiefighter < (width * (width - 1)) - 1) {
@@ -64,6 +90,11 @@ setInterval(() => {
             // alert("unlucky")
             // xwing = 76
             // tiefighter = 0
+
+        // * method of collision 
+        // if (cells['tiefighter' && 'laser'] ) {
+        //   remove tiefighter
+        // }
     }
 }, 200)
 

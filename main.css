@@ -35,6 +35,11 @@ body {
 }
 
 .laser {
-    background-color: green;
+    background-color: greenyellow;
+    background-size: contain;
+}
+
+.explosion {
+    background-image: url(https://previews.123rf.com/images/larser/larser1605/larser160500080/57118509-colored-cartoon-explosion-boom-cartoon-explosion-on-a-white-background-comic-speech-bubble-boom-stoc.jpg);
     background-size: contain;
 }
