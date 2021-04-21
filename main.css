@@ -3,6 +3,8 @@
 }
 
 body {
+    background-image: url(https://i.pinimg.com/originals/23/61/1e/23611e9658ff969f204fca858b3c24a1.jpg);
+    background-size: cover;
     align-items: center;
     display: flex;
     height: 100vh;
@@ -16,7 +18,7 @@ body {
     height: 650px;
     width: 550px;
     flex-direction: row;
-    border: 0.1px solid rgb(177, 0, 0);
+    border: 0px solid rgb(177, 0, 0);
     flex-wrap: wrap;
 }
 
@@ -30,8 +32,8 @@ body {
 }
 
 .tie {
-    background-image: url(https://i.pinimg.com/474x/44/15/f4/4415f4cb720fa4339dec3272527f16e2.jpg);
-    background-size: contain;
+    background-image: url(https://static.thenounproject.com/png/1388671-200.png);
+    background-size: cover;
 }
 
 .laser {
@@ -41,5 +43,15 @@ body {
 
 .explosion {
     background-image: url(https://previews.123rf.com/images/larser/larser1605/larser160500080/57118509-colored-cartoon-explosion-boom-cartoon-explosion-on-a-white-background-comic-speech-bubble-boom-stoc.jpg);
-    background-size: contain;
+    background-size: cover;
 }
+
+.bomb {
+  background-image: url(https://www.kindpng.com/picc/m/693-6935371_smoking-bomb-cartoon-evil-png-download-free-clipart.png);
+  background-size: contain;
+}
+
+/* .img {
+    height: 200px;
+    width: 200px;
+} */
