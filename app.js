@@ -13,17 +13,23 @@ const width = 13
 const cells = []
 
 let xwing = 162
-let tiefighters = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 ]
+let tiefighters = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+  14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+  27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
 let score = 0
 let lifes = 3
 const bombs = []
 
-
+let gameInPlay = false
 elements.startButton.addEventListener('click', () => {
   
+  if (gameInPlay === true) {
+    return 
+  } 
+  gameInPlay = true
+    
   elements.resetButton.style.display = 'inline-block'
-  elements.musicButton.style.display = 'inline-block'
-
+  // elements.musicButton.style.display = 'inline-block'
 
   for (let index = 0; index < width ** 2; index++) {
     const divBox = document.createElement('div')
@@ -122,7 +128,7 @@ elements.startButton.addEventListener('click', () => {
     }
   }, 400)
 
-  let clearBombInterval = false
+  const clearBombInterval = false
   function dropBomb() {
     const randomTieIndex = Math.floor(Math.random() * tiefighters.length)
     const newBomb = tiefighters[randomTieIndex] + 13
@@ -198,8 +204,12 @@ elements.startButton.addEventListener('click', () => {
     cells[xwing].classList.remove('shooter')
     xwing += 1
     cells[xwing].classList.add('shooter')
-  
-    tiefighters = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11  ,14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 ]
+
+
+    tiefighters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 
+      ,14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+
     tiefighters = tiefighters.map(tie => tie + 1)
   
     score = 0
@@ -215,7 +225,7 @@ elements.startButton.addEventListener('click', () => {
   function gameOver() {
     const gameOverFunction = confirm('The rebellion has fallen.')
     if (gameOverFunction === true) {
-      reset()
+      window.location.reload()
     }  else {
       clearInterval(intervalTie)
       clearBombInterval === true
@@ -223,51 +233,41 @@ elements.startButton.addEventListener('click', () => {
     }
   }
 
-  let intervalTie2
+  // let intervalTie2
   elements.resetButton.addEventListener('click',() => {
-    reset()
-    // bombs.shift()
-    clearBombInterval = true
+    window.location.reload()
+    // reset()
+    // // bombs.shift()
+    // clearBombInterval = true
 
-    setTimeout(() => {
-      bombs.shift()
-      clearBombInterval = false
+    // setTimeout(() => {
 
-      dropBomb()
-    }, 650)
-    clearInterval(intervalTie2)
-    intervalTie2 = setInterval(() => {
-      cells.forEach(wipe => {
-        wipe.classList.remove('tie')
-      })
-      tiefighters = tiefighters.map(tie => tie + 1)
-      // console.log(tiefighters)
-      tiefighters.forEach(tiefighter => {
-        cells[tiefighter].classList.add('tie')
-      })
-      if (tiefighters.includes(155)) {
-        cells.forEach(wipe => {
-          wipe.classList.remove('tie')
-        })
-        tiefighters.length = 0
-        clearInterval(intervalTie)
-        gameOver()
-      }
-    }, 550)
+    //   bombs.shift()
+    //   clearBombInterval = false
+
+    //   dropBomb()
+    // }, 650)
+    // clearInterval(intervalTie2)
+    // intervalTie2 = setInterval(() => {
+    //   cells.forEach(wipe => {
+    //     wipe.classList.remove('tie')
+    //   })
+    //   tiefighters = tiefighters.map(tie => tie + 1)
+    //   // console.log(tiefighters)
+    //   tiefighters.forEach(tiefighter => {
+    //     cells[tiefighter].classList.add('tie')
+    //   })
+    //   if (tiefighters.includes(155)) {
+    //     cells.forEach(wipe => {
+    //       wipe.classList.remove('tie')
+    //     })
+    //     tiefighters.length = 0
+    //     clearInterval(intervalTie)
+    //     gameOver()
+    //   }
+    // }, 550)
   })
   
-
-  elements.musicButton.addEventListener('click', () => {
-    if (elements.audioPlayer.paused){
-      elements.audioPlayer.src = 'sounds/Forcetune.wav'
-      elements.audioPlayer.play()
-      elements.musicButton.innerHTML = 'Pause Music'
-    } else {
-      elements.audioPlayer.pause()
-      elements.musicButton.innerHTML = 'Play Music'
-    }
-    // })
-  })
 
   function nextLevel() {
     cells.forEach(wipe => {
@@ -285,7 +285,12 @@ elements.startButton.addEventListener('click', () => {
     xwing += 1
     cells[xwing].classList.add('shooter')
 
-    tiefighters = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12 ,14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37  ]
+    
+    tiefighters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 
+      ,14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 
+      40, 41, 42, 43, 44, 45, 46, 47, 48, 48, 50] 
+        
     tiefighters = tiefighters.map(tie => tie + 1)
 
     score = 0
@@ -296,6 +301,17 @@ elements.startButton.addEventListener('click', () => {
       wipe.classList.remove('laser')
     })
   }
+})
+elements.musicButton.addEventListener('click', () => {
+  if (elements.audioPlayer.paused){
+    elements.audioPlayer.src = 'sounds/Forcetune.wav'
+    elements.audioPlayer.play()
+    elements.musicButton.innerHTML = 'Pause Music'
+  } else {
+    elements.audioPlayer.pause()
+    elements.musicButton.innerHTML = 'Play Music'
+  }
+  // })
 })
 
 // laser and tie fighter intervals should similar but the laser should be a slight bit faster

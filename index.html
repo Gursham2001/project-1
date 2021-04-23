@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script defer src="app.js"></script>
 </head>
 
@@ -14,12 +16,7 @@
         <!-- <img src='https://toppng.com/uploads/preview/star-wars-logo-transparent-background-11549909755ccn1ysdgwu.png'> -->
         <h1>Sith Invaders</h1>
     </header>
-    <section>
-        <section>
-            <div class="interactive">
-                <div class="score">Score: <span class="score1"> 0 </span></div>
-                <div class="life">Lifes Remaining: <span class="lifes1"> 3 </span></div>
-            </div>
+
             <!-- </section>
         <section>
             <h3>
@@ -32,9 +29,24 @@
             </p>
         </section>
     </section> -->
-    <button id='start'> Let's go Mario! </button>
-    <button id='music'> Play Music</button>
-    <button id='restart'> Restart </button>
+    <main>
     <audio src=""></audio>
-            <div class='grid'></div>
+    <section class="left">
+        <div class='grid'></div>
+    </section>
+
+      <section class="right">
+      <div class = "side">
+        <div class="interactive">
+            <div class="score">Score: <span class="score1"> 0 </span></div>
+            <div class="life">Lifes Remaining: <span class="lifes1"> 3 </span></div>
+        </div>
+        <div id="button">
+        <button id='start'> Let's go Mario! </button>
+        <button id='music'> Play Music</button>
+        <button id='restart'> Restart </button>
+      </div>
+      </div>
+    </section>
+    </main>
 </body>

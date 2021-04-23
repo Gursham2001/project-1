@@ -1,3 +1,5 @@
+
+
 * {
     box-sizing: border-box;
 }
@@ -11,16 +13,34 @@ body {
     justify-content: center;
     margin: 0;
     flex-direction: column;
+    font-family: 'Bangers', cursive;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  gap: 3rem;
+
+}
+
+header{
+  font-family: ;
+}
 
 .grid {
     display: flex;
-    height: 650px;
-    width: 550px;
-    flex-direction: row;
-    border: 0px solid rgb(177, 0, 0);
+    height: 750px;
+    width: 650px;
+    /* flex-direction: row; */
+    flex: 1;
+    border: 4px solid black;
     flex-wrap: wrap;
+}
+
+.right {
+  
 }
 
 .grid div {
@@ -28,8 +48,8 @@ body {
 }
 
 .shooter {
-    background-image: url(https://image.pngaaa.com/84/3218084-middle.png);
-    background-size: 100%;
+    background-image: url(./images/xwing3.png);
+    background-size: cover;
 }
 
 .tie {
@@ -38,17 +58,17 @@ body {
 }
 
 .laser {
-    background-color: greenyellow;
-    background-size: contain;
+    background-image: url(./images/red.png);
+    background-size: cover;
 }
 
 .explosion {
-    background-image: url(https://previews.123rf.com/images/larser/larser1605/larser160500080/57118509-colored-cartoon-explosion-boom-cartoon-explosion-on-a-white-background-comic-speech-bubble-boom-stoc.jpg);
+    background-image: url(./images/boom2.png);
     background-size: cover;
 }
 
 .bomb {
-  background-image: url(https://www.kindpng.com/picc/m/693-6935371_smoking-bomb-cartoon-evil-png-download-free-clipart.png);
+  background: url(./images/bomb.png) no-repeat center center / contain;
   background-size: contain;
 }
 
@@ -56,9 +76,23 @@ body {
   display: none;
 }
 
-#music {
-  display: none;
+#button {
+  display: flex;
+  color:rgb(177, 0, 0);
+  padding: 10px;
+  margin: 10px;
+  flex-direction: column;
 }
+
+button {
+  margin: 5px; 
+  opacity: 0.7;
+}
+
+
+/* #music {
+  display: none;
+} */
 /* .img {
     height: 200px;
     width: 200px;
