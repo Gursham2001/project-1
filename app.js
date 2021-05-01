@@ -1,3 +1,4 @@
+// ? adding all query selectors and classes as constants
 const grid = document.querySelector('.grid')
 const elements = {
   score: document.querySelector('.score1'),
@@ -6,6 +7,9 @@ const elements = {
   lifes: document.querySelector('.lifes1'),
   audioPlayer: document.querySelector('audio'),
   musicButton: document.querySelector('#music'),
+  text: document.querySelector('.text'),
+  scoreAndLifes: document.querySelector('.interactive'),
+  gap: document.querySelector('main'),
 }
 
 const width = 13
@@ -20,17 +24,26 @@ let score = 0
 let lifes = 3
 const bombs = []
 
+// ? we set game in play as false and then changes it to true so we stop the button from being able to function again.
 let gameInPlay = false
+
+// ? add a start button with all content wrapped within.
 elements.startButton.addEventListener('click', () => {
   
+  // ? this if statement checks if the gameinplay has been reassigned to be true, if true it stops the start button from being pressed twice
   if (gameInPlay === true) {
     return 
   } 
   gameInPlay = true
     
+  // ? these change the styling of classes when the button is pressed
+  grid.style.display = 'flex'
   elements.resetButton.style.display = 'inline-block'
-  // elements.musicButton.style.display = 'inline-block'
+  elements.text.style.display = 'none'
+  elements.scoreAndLifes.style.display = 'inline-block'
+  elements.startButton.style.display = 'none'
 
+  // ! get help explaining.
   for (let index = 0; index < width ** 2; index++) {
     const divBox = document.createElement('div')
     grid.appendChild(divBox)
@@ -40,26 +53,36 @@ elements.startButton.addEventListener('click', () => {
     cells.push(divBox)
   }
 
+  // ? we add a the class of shooter which is the xwing on to the grid 
   cells[xwing].classList.add('shooter')
-
+  
+  // ? we have to get the score to be updated when necessary
   elements.score.innerHTML = score
 
+  // ? we have to add functions where the user is able to move an shoot
   document.addEventListener('keydown', (event) => {
 
     const key = event.key
     // console.log(key)
     if (key === 'ArrowLeft' && !(xwing % width === 0) && !(xwing < width)) {
+      // ? we have to remove the xwing from the cell before we can move it hence we do classList.remove
       cells[xwing].classList.remove('shooter')
+      // ? -= 1 gives the player the ablity to move left
       xwing -= 1
+      // ? we have to add the xwing back to the cell its been moved to hence we do classList.add
       cells[xwing].classList.add('shooter')
     }
     if (key === 'ArrowRight' && !(xwing % width === width - 1)) {
+      // ? we have to remove the xwing from the cell before we can move it hence we do classList.remove
       cells[xwing].classList.remove('shooter')
+      // ? += 1 gives the player the ablity to move right
       xwing += 1
+      // ? we have to add the xwing back to the cell its been moved to hence we do classList.add
       cells[xwing].classList.add('shooter')
     }
-
+    // ? we have to also do a keydown down for space so the tie fighter is able to shoot
     if (key === ' ') {
+      // ? we set laser to xwing so the laser would shoot from the same cell as the xwing so essentially its a tracker
       let laser = xwing 
       cells[laser].classList.add('laser')
       const intervalLaser = setInterval(() => {
