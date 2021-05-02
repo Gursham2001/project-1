@@ -17,9 +17,11 @@ const width = 13
 const cells = []
 
 let xwing = 162
+
 let tiefighters = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
   14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
   27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+
 let score = 0
 let lifes = 3
 const bombs = []
@@ -43,7 +45,7 @@ elements.startButton.addEventListener('click', () => {
   elements.scoreAndLifes.style.display = 'inline-block'
   elements.startButton.style.display = 'none'
 
-  // ! get help explaining.
+  // ? this loop creates HTML divs for each grid by appending child
   for (let index = 0; index < width ** 2; index++) {
     const divBox = document.createElement('div')
     grid.appendChild(divBox)
@@ -118,12 +120,6 @@ elements.startButton.addEventListener('click', () => {
           confirm('You WIN!')
           nextLevel()
         }
-
-        // const tieBombIndex = bombs.find(bomb => cells[bomb].classList.contains('laser'), () => {
-        //   cells[laser].classList.remove('bomb')
-        // })
-
-        // console.log(tieBombIndex)
 
         clearInterval(intervalLaser)
       }, 300)
@@ -209,41 +205,6 @@ elements.startButton.addEventListener('click', () => {
   }
   dropBomb()
 
-  function reset() {
-    clearInterval(intervalTie)
-  
-    cells.forEach(wipe => {
-      wipe.classList.remove('tie')
-    })
-  
-    cells.forEach(wipe => {
-      wipe.classList.remove('shooter')
-    })
-    xwing = 162
-    cells[xwing].classList.remove('shooter')
-    xwing -= 1
-    cells[xwing].classList.add('shooter')
-  
-    cells[xwing].classList.remove('shooter')
-    xwing += 1
-    cells[xwing].classList.add('shooter')
-
-
-    tiefighters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 
-      ,14 ,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
-      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
-
-    tiefighters = tiefighters.map(tie => tie + 1)
-  
-    score = 0
-    elements.score.innerHTML = score
-    lifes = 3
-    elements.lifes.innerHTML = lifes
-  
-    cells.forEach(wipe => {
-      wipe.classList.remove('laser')
-    })
-  }
 
   function gameOver() {
     const gameOverFunction = confirm('The rebellion has fallen.')
@@ -259,36 +220,6 @@ elements.startButton.addEventListener('click', () => {
   // let intervalTie2
   elements.resetButton.addEventListener('click',() => {
     window.location.reload()
-    // reset()
-    // // bombs.shift()
-    // clearBombInterval = true
-
-    // setTimeout(() => {
-
-    //   bombs.shift()
-    //   clearBombInterval = false
-
-    //   dropBomb()
-    // }, 650)
-    // clearInterval(intervalTie2)
-    // intervalTie2 = setInterval(() => {
-    //   cells.forEach(wipe => {
-    //     wipe.classList.remove('tie')
-    //   })
-    //   tiefighters = tiefighters.map(tie => tie + 1)
-    //   // console.log(tiefighters)
-    //   tiefighters.forEach(tiefighter => {
-    //     cells[tiefighter].classList.add('tie')
-    //   })
-    //   if (tiefighters.includes(155)) {
-    //     cells.forEach(wipe => {
-    //       wipe.classList.remove('tie')
-    //     })
-    //     tiefighters.length = 0
-    //     clearInterval(intervalTie)
-    //     gameOver()
-    //   }
-    // }, 550)
   })
   
 
@@ -325,6 +256,7 @@ elements.startButton.addEventListener('click', () => {
     })
   }
 })
+
 elements.musicButton.addEventListener('click', () => {
   if (elements.audioPlayer.paused){
     elements.audioPlayer.src = 'sounds/Forcetune.wav'
@@ -334,7 +266,5 @@ elements.musicButton.addEventListener('click', () => {
     elements.audioPlayer.pause()
     elements.musicButton.innerHTML = 'Play Music'
   }
-  // })
 })
 
-// laser and tie fighter intervals should similar but the laser should be a slight bit faster
